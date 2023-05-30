@@ -36,7 +36,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.oneplatform.obeng.R
-import com.oneplatform.obeng.ui.theme.ObengTheme
 import com.oneplatform.obeng.ui.theme.colorPrimary
 
 @OptIn(ExperimentalMaterial3Api::class)
