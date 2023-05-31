@@ -14,9 +14,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.oneplatform.obeng.ui.screen.components.HomeScreen.HomeScreenHeader
 
 @Composable
 fun HomeScreen(navController: NavController) {
+    HomeScreenHeader()
 }
 
 
@@ -25,5 +27,5 @@ fun HomeScreen(navController: NavController) {
 @Composable
 fun HomeScreenPreview(){
     val navController = rememberNavController()
-    HomeScreen(navController)
+    HomeScreen(navController = navController)
 }
