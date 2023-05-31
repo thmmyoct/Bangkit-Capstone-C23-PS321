@@ -9,6 +9,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.ClickableText
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -21,27 +24,43 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.navigation.NavController
+import com.oneplatform.obeng.R
+import com.oneplatform.obeng.navigation.Screen
+import com.oneplatform.obeng.ui.screen.components.CustomStyleTextField
 import com.oneplatform.obeng.ui.screen.components.HeaderView
-import com.oneplatform.obeng.ui.screen.components.LoginFormTechnician
-import com.oneplatform.obeng.ui.screen.components.LoginFormUser
 import com.oneplatform.obeng.ui.theme.ObengTheme
+import com.oneplatform.obeng.ui.theme.Red100
+import com.oneplatform.obeng.ui.theme.Red20
 import com.oneplatform.obeng.ui.theme.White10
+import com.oneplatform.obeng.ui.theme.dark_gray
+import com.oneplatform.obeng.ui.theme.gray
+import com.oneplatform.obeng.ui.theme.light_gray
 
 @Composable
-fun LoginScreen(openDashboard: () -> Unit) {
+fun LoginScreen(navController: NavController) {
     ObengTheme() {
         val loginPages = listOf("Customer", "Technician")
         val selectedTabIndex = rememberSaveable { mutableStateOf(0) }
-
         Column(modifier = Modifier.fillMaxSize()) {
             Box(modifier = Modifier.weight(1f)) {
                 when (selectedTabIndex.value) {
-                    0 -> CustomerLoginPage(openDashboard)
-                    1 -> TechnicianLoginPage(openDashboard)
+                    0 -> CustomerLoginPage(navController = navController)
+                    1 -> TechnicianLoginPage(navController = navController)
                 }
             }
 
@@ -72,7 +91,7 @@ fun LoginScreen(openDashboard: () -> Unit) {
 
 
 @Composable
-fun CustomerLoginPage(openDashboard: () -> Unit) {
+fun CustomerLoginPage(navController: NavController) {
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -107,7 +126,136 @@ fun CustomerLoginPage(openDashboard: () -> Unit) {
                             end.linkTo(parent.end)
                         },
                 ) {
-                    LoginFormUser()
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(30.dp)
+                    ) {
+                        val loginText = "Log in to your account."
+                        val loginWord = "Log in"
+                        val loginAnnotatedString = buildAnnotatedString {
+                            append(loginText)
+                            addStyle(
+                                style = SpanStyle(
+                                    color = dark_gray,
+                                    fontFamily = FontFamily(Font(R.font.helvetica_neue_regular))
+                                ),
+                                start = 0,
+                                end = loginText.length
+                            )
+                            addStyle(
+                                style = SpanStyle(
+                                    color = White10,
+                                    fontFamily = FontFamily(Font(R.font.helvetica_neue_medium))
+                                ),
+                                start = 0,
+                                end = loginWord.length
+                            )
+                        }
+
+                        Text(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(top = 10.dp, bottom = 20.dp),
+
+                            style = MaterialTheme.typography.headlineMedium.copy(color = gray),
+                            text = "Create your Customer Account!",
+                            textAlign = TextAlign.Center,
+                            fontSize = 20.sp,
+                        )
+                        Text(
+                            text = "Email Address",
+                            style = MaterialTheme.typography.labelSmall.copy(color = gray),
+                            modifier = Modifier.padding(bottom = 10.dp, top = 10.dp)
+                        )
+
+                        CustomStyleTextField(
+                            "Email Address",
+                            R.drawable.ic_email,
+                            KeyboardType.Email,
+                            VisualTransformation.None
+                        )
+
+                        Text(
+                            text = "Password",
+                            style = MaterialTheme.typography.labelSmall.copy(color = gray),
+                            modifier = Modifier.padding(bottom = 10.dp, top = 20.dp)
+                        )
+                        CustomStyleTextField(
+                            "Password",
+                            R.drawable.ic_password,
+                            KeyboardType.Password,
+                            PasswordVisualTransformation()
+                        )
+
+                        Text(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(top = 10.dp),
+                            text = "Forgot Password?",
+                            textAlign = TextAlign.End,
+                            style = MaterialTheme.typography.labelMedium.copy(color = Red20)
+                        )
+                        Button(
+                            onClick = {
+                                navController.popBackStack()
+                                navController.navigate("home_screen")
+                            },
+                            colors = ButtonDefaults.buttonColors(containerColor = Red100),
+                            modifier = Modifier
+                                .padding(top = 30.dp, bottom = 34.dp)
+                                .align(Alignment.CenterHorizontally)
+                                .fillMaxWidth(),
+                            shape = RoundedCornerShape(16.dp)
+                        ) {
+                            Text(
+                                modifier = Modifier.padding(top = 8.dp, bottom = 8.dp),
+                                text = "Login",
+                                color = Color.White,
+                                style = MaterialTheme.typography.labelLarge
+                            )
+                        }
+
+                        val signUpText = "Don't have an account? Sign Up"
+                        val signUpWord = "Sign Up"
+                        val signUpAnnotatedString = buildAnnotatedString {
+                            append(signUpText)
+                            addStyle(
+                                style = SpanStyle(
+                                    color = light_gray,
+                                    fontFamily = FontFamily(Font(R.font.helvetica_neue_regular))
+                                ),
+                                start = 0,
+                                end = signUpText.length
+                            )
+                            addStyle(
+                                style = SpanStyle(
+                                    color = Red20,
+                                    fontFamily = FontFamily(Font(R.font.helvetica_neue_medium))
+                                ),
+                                start = signUpText.indexOf(signUpWord),
+                                end = signUpText.length
+                            )
+                        }
+
+                        Box(
+                            modifier = Modifier.fillMaxWidth(),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            ClickableText(
+                                text = signUpAnnotatedString,
+                                style = TextStyle(fontSize = 14.sp),
+                                onClick = { offset ->
+                                    if (offset in signUpText.indexOf(signUpWord) until signUpText.length) {
+                                        // Handle click event here
+                                        // For example, navigate to the sign-up screen
+                                        navController.navigate("register_user")
+                                    }
+                                }
+                            )
+                        }
+                    }
+
                 }
             }
         }
@@ -115,7 +263,7 @@ fun CustomerLoginPage(openDashboard: () -> Unit) {
 }
 
 @Composable
-fun TechnicianLoginPage(openDashboard: () -> Unit) {
+fun TechnicianLoginPage(navController: NavController) {
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -150,7 +298,135 @@ fun TechnicianLoginPage(openDashboard: () -> Unit) {
                             end.linkTo(parent.end)
                         },
                 ) {
-                    LoginFormTechnician()
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(30.dp)
+                    ) {
+                        val loginText = "Log in to your account."
+                        val loginWord = "Log in"
+                        val loginAnnotatedString = buildAnnotatedString {
+                            append(loginText)
+                            addStyle(
+                                style = SpanStyle(
+                                    color = dark_gray,
+                                    fontFamily = FontFamily(Font(R.font.helvetica_neue_regular))
+                                ),
+                                start = 0,
+                                end = loginText.length
+                            )
+                            addStyle(
+                                style = SpanStyle(
+                                    color = White10,
+                                    fontFamily = FontFamily(Font(R.font.helvetica_neue_medium))
+                                ),
+                                start = 0,
+                                end = loginWord.length
+                            )
+                        }
+
+                        Text(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(top = 10.dp, bottom = 20.dp),
+
+                            style = MaterialTheme.typography.headlineMedium.copy(color = gray),
+                            text = "Create your Technician Account!",
+                            textAlign = TextAlign.Center,
+                            fontSize = 20.sp,
+                        )
+                        Text(
+                            text = "Email Address",
+                            style = MaterialTheme.typography.labelSmall.copy(color = gray),
+                            modifier = Modifier.padding(bottom = 10.dp, top = 10.dp)
+                        )
+
+                        CustomStyleTextField(
+                            "Email Address",
+                            R.drawable.ic_email,
+                            KeyboardType.Email,
+                            VisualTransformation.None
+                        )
+
+                        Text(
+                            text = "Password",
+                            style = MaterialTheme.typography.labelSmall.copy(color = gray),
+                            modifier = Modifier.padding(bottom = 10.dp, top = 20.dp)
+                        )
+                        CustomStyleTextField(
+                            "Password",
+                            R.drawable.ic_password,
+                            KeyboardType.Password,
+                            PasswordVisualTransformation()
+                        )
+
+                        Text(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(top = 10.dp),
+                            text = "Forgot Password?",
+                            textAlign = TextAlign.End,
+                            style = MaterialTheme.typography.labelMedium.copy(color = Red20)
+                        )
+                        Button(
+                            onClick = {
+                                navController.popBackStack()
+                                navController.navigate("home_screen")},
+                            colors = ButtonDefaults.buttonColors(containerColor = Red100),
+                            modifier = Modifier
+                                .padding(top = 30.dp, bottom = 34.dp)
+                                .align(Alignment.CenterHorizontally)
+                                .fillMaxWidth(),
+                            shape = RoundedCornerShape(16.dp)
+                        ) {
+                            Text(
+                                modifier = Modifier.padding(top = 8.dp, bottom = 8.dp),
+                                text = "Login",
+                                color = Color.White,
+                                style = MaterialTheme.typography.labelLarge
+                            )
+                        }
+
+                        val signUpText = "Don't have an account? Sign Up"
+                        val signUpWord = "Sign Up"
+                        val signUpAnnotatedString = buildAnnotatedString {
+                            append(signUpText)
+                            addStyle(
+                                style = SpanStyle(
+                                    color = light_gray,
+                                    fontFamily = FontFamily(Font(R.font.helvetica_neue_regular))
+                                ),
+                                start = 0,
+                                end = signUpText.length
+                            )
+                            addStyle(
+                                style = SpanStyle(
+                                    color = Red20,
+                                    fontFamily = FontFamily(Font(R.font.helvetica_neue_medium))
+                                ),
+                                start = signUpText.indexOf(signUpWord),
+                                end = signUpText.length
+                            )
+                        }
+
+                        Box(
+                            modifier = Modifier.fillMaxWidth(),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            ClickableText(
+                                text = signUpAnnotatedString,
+                                style = TextStyle(fontSize = 14.sp),
+                                onClick = { offset ->
+                                    if (offset in signUpText.indexOf(signUpWord) until signUpText.length) {
+                                        // Handle click event here
+                                        // For example, navigate to the sign-up screen
+                                        navController.navigate("register_technician")
+                                    }
+                                }
+                            )
+                        }
+                    }
+
                 }
 
             }
@@ -166,6 +442,6 @@ fun LoginScreenHeader() {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    LoginScreen(openDashboard = {})
+    //LoginScreen(navController)
 }
 

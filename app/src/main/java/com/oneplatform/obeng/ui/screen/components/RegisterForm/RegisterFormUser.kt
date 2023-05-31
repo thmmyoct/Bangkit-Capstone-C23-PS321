@@ -1,4 +1,4 @@
-package com.oneplatform.obeng.ui.screen.components
+package com.oneplatform.obeng.ui.screen.components.RegisterForm
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -30,13 +30,16 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.navigation.NavController
 import com.oneplatform.obeng.R
+import com.oneplatform.obeng.ui.screen.components.CustomStyleTextField
+import com.oneplatform.obeng.ui.screen.components.SmallBanner
 import com.oneplatform.obeng.ui.theme.Red100
 import com.oneplatform.obeng.ui.theme.White10
 import com.oneplatform.obeng.ui.theme.gray
 
 @Composable
-fun RegisterFormUser(){
+fun RegisterFormUser(navController: NavController){
     var pageCount = remember { mutableStateOf(0) }
     val listState = rememberLazyListState()
     LazyColumn(state = listState, modifier = Modifier
@@ -184,5 +187,5 @@ fun RegisterFormUser(){
 @Preview(showBackground = true)
 @Composable
 fun RegisterFormUserPreview(){
-    RegisterFormUser()
+   // RegisterFormUser()
 }

@@ -3,14 +3,15 @@ package com.oneplatform.obeng
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import com.oneplatform.obeng.navigation.Navigation
 import com.oneplatform.obeng.ui.screen.HomeScreen
 import com.oneplatform.obeng.ui.screen.LoginScreen
-import com.oneplatform.obeng.ui.screen.RegisterScreen
 import com.oneplatform.obeng.ui.screen.SplashScreen
-import com.oneplatform.obeng.ui.screen.components.RegisterFormTechnician
-import com.oneplatform.obeng.ui.screen.components.RegisterFormUser
 import com.oneplatform.obeng.ui.theme.ObengTheme
 
 class MainActivity : ComponentActivity() {
@@ -18,26 +19,16 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ObengTheme {
-
-                val navigateToLogin = remember { mutableStateOf(false) }
-
-                if (navigateToLogin.value) {
-                    //HomeScreen()
-                    //RegisterFormTechnician()
-                    //RegisterFormUser()
-                    //RegisterScreen()
-                    LoginScreen(openDashboard = {})
-                } else {
-                    SplashScreen(onTimeout = { navigateToLogin.value = true })
-                }
-
-
-
+                ObengComposeUIMain()
             }
-
         }
-
     }
 
+    @Composable
+    fun ObengComposeUIMain(){
+        Surface(color = MaterialTheme.colorScheme.background) {
+            Navigation()
+        }
+    }
 
 }

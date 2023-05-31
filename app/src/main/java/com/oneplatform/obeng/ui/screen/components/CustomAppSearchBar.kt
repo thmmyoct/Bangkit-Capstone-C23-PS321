@@ -38,8 +38,7 @@ fun CustomAppSearchBar(
     placeHolder: String,
     leadingIconId: Int,
     keyboardType: KeyboardType,
-   // visualTransformation: VisualTransformation
-){
+) {
     val textState = remember { mutableStateOf(TextFieldValue()) }
 
     OutlinedTextField(
@@ -47,26 +46,19 @@ fun CustomAppSearchBar(
             .fillMaxWidth()
             .background(Color.Transparent),
         value = textState.value,
-
         onValueChange = { valueChanged ->
             textState.value = valueChanged
         },
         keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
         placeholder = { Text(text = placeHolder) },
-        leadingIcon = {
-            Row(
-                modifier = Modifier.wrapContentWidth(),
-                horizontalArrangement = Arrangement.Absolute.Right,
-                content = {
-                    Image(
-                        modifier = Modifier
-                            .padding(start = 10.dp, end = 10.dp)
-                            .size(18.dp),
-                        bitmap = ImageBitmap.imageResource(id = leadingIconId),  // material icon
-                        colorFilter = ColorFilter.tint(Color.White),
-                        contentDescription = "custom_text_field"
-                    )
-                }
+        trailingIcon = {
+            Image(
+                modifier = Modifier
+                    .padding(start = 10.dp, end = 10.dp)
+                    .size(18.dp),
+                bitmap = ImageBitmap.imageResource(id = leadingIconId),  // material icon
+                colorFilter = ColorFilter.tint(Color.White),
+                contentDescription = "custom_text_field"
             )
         },
         colors = TextFieldDefaults.outlinedTextFieldColors(
@@ -79,6 +71,7 @@ fun CustomAppSearchBar(
         textStyle = TextStyle(color = Color.White, fontSize = 16.sp)
     )
 }
+
 
 
 

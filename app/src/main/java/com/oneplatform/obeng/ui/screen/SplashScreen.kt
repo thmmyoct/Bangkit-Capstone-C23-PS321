@@ -21,15 +21,19 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.oneplatform.obeng.R
+import com.oneplatform.obeng.navigation.Screen
 import com.oneplatform.obeng.ui.theme.splash_color
 import kotlinx.coroutines.delay
 
 @Composable
-fun SplashScreen(onTimeout: () -> Unit) {
+fun SplashScreen(navController: NavController) {
     LaunchedEffect(Unit) {
         delay(2000) // Simulate a delay for the splash screen
-        onTimeout() // Invoke the callback to navigate to the login screen after the delay
+        navController.popBackStack()
+        navController.navigate(Screen.LoginScreen.route)
+    // Invoke the callback to navigate to the login screen after the delay
     }
 
     // Splash screen UI
@@ -78,5 +82,5 @@ fun SplashScreen(onTimeout: () -> Unit) {
 @Preview(showBackground = true)
 @Composable
 fun SplashScreenPreview() {
-    SplashScreen(onTimeout = {})
+    //SplashScreen(navController = {}, onTimeout = {})
 }
