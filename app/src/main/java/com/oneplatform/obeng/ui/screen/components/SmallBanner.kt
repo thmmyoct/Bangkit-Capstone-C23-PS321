@@ -26,7 +26,7 @@ fun SmallBanner(pageTitle: String) {
         painter = painterResource(id = R.drawable.login_bg),
         contentDescription = "login_bg",
         contentScale = ContentScale.FillWidth,
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxWidth()
     )
     Row(
         verticalAlignment = Alignment.CenterVertically,
