@@ -78,7 +78,7 @@ fun RegisterFormTechnician(){
                     ) {
 
                         Row(
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier.fillMaxWidth().padding(bottom = 10.dp),
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.Center
                         ){
@@ -86,13 +86,13 @@ fun RegisterFormTechnician(){
                                 Text(
                                     style = MaterialTheme.typography.titleMedium.copy(color = gray),
                                     fontWeight = FontWeight.Bold,
-                                    text = "User Registration")
+                                    text = "Technician Registration")
 
                                 //Username
                                 Text(
                                     text = "Username",
                                     style = MaterialTheme.typography.labelSmall.copy(color = gray),
-                                    modifier = Modifier.padding(bottom = 10.dp, top = 20.dp)
+                                    modifier = Modifier.padding(bottom = 10.dp, top = 30.dp)
                                 )
                                 CustomStyleTextField(
                                     "Username",

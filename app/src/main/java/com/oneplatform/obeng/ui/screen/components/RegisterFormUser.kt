@@ -70,7 +70,7 @@ fun RegisterFormUser(){
                             start.linkTo(parent.start)
                             end.linkTo(parent.end)
                         }
-                ){
+                ) {
                     Column(
                         modifier = Modifier
                             .fillMaxSize()
@@ -78,21 +78,22 @@ fun RegisterFormUser(){
                     ) {
 
                         Row(
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier.fillMaxWidth().padding(top = 10.dp),
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.Center
-                        ){
+                        ) {
                             Column {
                                 Text(
                                     style = MaterialTheme.typography.titleMedium.copy(color = gray),
                                     fontWeight = FontWeight.Bold,
-                                    text = "User Registration")
+                                    text = "User Registration"
+                                )
 
                                 //Username
                                 Text(
                                     text = "Username",
                                     style = MaterialTheme.typography.labelSmall.copy(color = gray),
-                                    modifier = Modifier.padding(bottom = 10.dp, top = 20.dp)
+                                    modifier = Modifier.padding(bottom = 10.dp, top = 30.dp)
                                 )
                                 CustomStyleTextField(
                                     "Username",
@@ -153,56 +154,13 @@ fun RegisterFormUser(){
                                     VisualTransformation.None
                                 )
 
-                                //Dropdown Skills
-                                Text(
-                                    text = "Skill",
-                                    style = MaterialTheme.typography.labelSmall.copy(color = gray),
-                                    modifier = Modifier.padding(bottom = 10.dp, top = 10.dp)
-                                )
-                                CustomDropdownMenu("Choose Skill", R.drawable.ic_flat_flower, VisualTransformation.None)
-
-                                //Certification
-                                Text(
-                                    text = "Certification Link",
-                                    style = MaterialTheme.typography.labelSmall.copy(color = gray),
-                                    modifier = Modifier.padding(bottom = 10.dp, top = 10.dp)
-                                )
-                                CustomStyleTextField(
-                                    "Certification Link",
-                                    R.drawable.ic_checklist,
-                                    KeyboardType.Text,
-                                    VisualTransformation.None
-                                )
-
-                                //Portofolio
-                                Text(
-                                    text = "Portofolio Link",
-                                    style = MaterialTheme.typography.labelSmall.copy(color = gray),
-                                    modifier = Modifier.padding(bottom = 10.dp, top = 10.dp)
-                                )
-                                CustomStyleTextField(
-                                    "Portofolio Link",
-                                    R.drawable.ic_document,
-                                    KeyboardType.Text,
-                                    VisualTransformation.None
-                                )
-
-                                //Jenis Keahlian
-                                Text(
-                                    text = "Skill Category",
-                                    style = MaterialTheme.typography.labelSmall.copy(color = gray),
-                                    modifier = Modifier.padding(bottom = 10.dp, top = 10.dp)
-                                )
-                                CustomStyleGroupedCheckbox(
-                                    mItemsList = listOf("Mesin", "Ban", "Bodi Kendaraan", "Interior", "Oli")
-                                )
-
+                                //Button
                                 //Button Register
                                 Button(
                                     onClick = {},
                                     colors = ButtonDefaults.buttonColors(containerColor = Red100),
                                     modifier = Modifier
-                                        .padding(top = 30.dp, bottom = 34.dp)
+                                        .padding(top = 60.dp, bottom = 34.dp)
                                         .align(Alignment.CenterHorizontally)
                                         .fillMaxWidth(),
                                     shape = RoundedCornerShape(16.dp)
