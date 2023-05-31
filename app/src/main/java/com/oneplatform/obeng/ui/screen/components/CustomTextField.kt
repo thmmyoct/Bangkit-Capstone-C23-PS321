@@ -30,13 +30,14 @@ import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.oneplatform.obeng.R
-import com.oneplatform.obeng.ui.theme.colorPrimary
+import com.oneplatform.obeng.ui.theme.Red20
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -53,6 +54,7 @@ fun CustomStyleTextField(
             .fillMaxSize()
             .background(Color.White),
         value = textState.value,
+
         onValueChange = { valueChanged ->
             textState.value = valueChanged
         },
@@ -68,7 +70,7 @@ fun CustomStyleTextField(
                             .padding(start = 10.dp, end = 10.dp)
                             .size(18.dp),
                         bitmap = ImageBitmap.imageResource(id = leadingIconId),  // material icon
-                        colorFilter = ColorFilter.tint(colorPrimary),
+                        colorFilter = ColorFilter.tint(Red20),
                         contentDescription = "custom_text_field"
                     )
                     Canvas(
@@ -86,19 +88,19 @@ fun CustomStyleTextField(
             )
         },
         colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = colorPrimary,
+            focusedBorderColor = Red20,
             unfocusedBorderColor = Color.Transparent,
             focusedLabelColor = Color.White,
             disabledTrailingIconColor = Color.White,
-//            disabledTextColor = NaviBlue
         ),
-        shape = RoundedCornerShape(10.dp),
+        shape = RoundedCornerShape(10.dp), // Adjust the corner radius as needed
         textStyle = TextStyle(color = Color.Black, fontSize = 16.sp),
         visualTransformation = visualTransformation
     )
 }
 
-@Preview(showBackground = true)
+
+@Preview(showBackground = false)
 @Composable
 fun CustomTextFieldPreview(){
     CustomStyleTextField(

@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -36,7 +37,7 @@ fun HeaderView() {
         modifier = Modifier.padding(bottom = 40.dp)
     ) {
         Image(
-            modifier = Modifier.wrapContentWidth(),
+            modifier = Modifier.wrapContentWidth().size(60.dp),
             bitmap = ImageBitmap.imageResource(id = R.drawable.flower_logo),
             contentDescription = "header_view_flower_logo"
         )

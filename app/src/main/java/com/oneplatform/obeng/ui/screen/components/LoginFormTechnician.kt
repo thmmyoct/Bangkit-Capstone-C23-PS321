@@ -22,14 +22,13 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.oneplatform.obeng.R
-import com.oneplatform.obeng.ui.theme.buttonPrimary
-import com.oneplatform.obeng.ui.theme.colorPrimary
+import com.oneplatform.obeng.ui.theme.Red100
+import com.oneplatform.obeng.ui.theme.Red20
 import com.oneplatform.obeng.ui.theme.dark_gray
-import com.oneplatform.obeng.ui.theme.ghost_white
+import com.oneplatform.obeng.ui.theme.White10
 import com.oneplatform.obeng.ui.theme.gray
 import com.oneplatform.obeng.ui.theme.light_gray
 
@@ -54,7 +53,7 @@ fun LoginFormTechnician(){
             )
             addStyle(
                 style = SpanStyle(
-                    color = ghost_white,
+                    color = White10,
                     fontFamily = FontFamily(Font(R.font.helvetica_neue_medium))
                 ),
                 start = 0,
@@ -66,6 +65,8 @@ fun LoginFormTechnician(){
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 10.dp, bottom = 20.dp),
+
+            style = MaterialTheme.typography.headlineMedium.copy(color = gray),
             text = "Create your Technician Account!",
             textAlign = TextAlign.Center,
             fontSize = 20.sp,
@@ -101,11 +102,11 @@ fun LoginFormTechnician(){
                 .padding(top = 10.dp),
             text = "Forgot Password?",
             textAlign = TextAlign.End,
-            style = MaterialTheme.typography.labelMedium.copy(color = colorPrimary)
+            style = MaterialTheme.typography.labelMedium.copy(color = Red20)
         )
         Button(
             onClick = {},
-            colors = ButtonDefaults.buttonColors(containerColor = buttonPrimary),
+            colors = ButtonDefaults.buttonColors(containerColor = Red100),
             modifier = Modifier
                 .padding(top = 30.dp, bottom = 34.dp)
                 .align(Alignment.CenterHorizontally)
@@ -134,7 +135,7 @@ fun LoginFormTechnician(){
             )
             addStyle(
                 style = SpanStyle(
-                    color = colorPrimary,
+                    color = Red20,
                     fontFamily = FontFamily(Font(R.font.helvetica_neue_medium))
                 ),
                 start = signUpText.indexOf(signUpWord),
