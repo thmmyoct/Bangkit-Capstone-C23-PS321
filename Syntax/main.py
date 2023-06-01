@@ -19,11 +19,11 @@ def predict(request):
     # Preprocess input data from the request
     data = request.get_json()
     user_id = data['user_id']
-    needed_engine = data['needed_mesin']
-    needed_tire = data['needed_ban']
-    needed_body = data['needed_bodi']
+    needed_mesin = data['needed_mesin']
+    needed_ban = data['needed_ban']
+    needed_bodi = data['needed_bodi']
     needed_interior = data['needed_interior']
-    needed_oil = data['needed_oli']
+    needed_oli = data['needed_oli']
     input_data = np.array([[user_id, needed_mesin, needed_ban, needed_bodi, needed_interior, needed_oli]], dtype=np.float32)
 
     # Set the input tensor
