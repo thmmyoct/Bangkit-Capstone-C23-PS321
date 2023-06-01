@@ -24,7 +24,7 @@ def predict(request):
     needed_body = data['needed_bodi']
     needed_interior = data['needed_interior']
     needed_oil = data['needed_oli']
-    input_data = np.array([[user_id, needed_engine, needed_tire, needed_body, needed_interior, needed_oil]], dtype=np.float32)
+    input_data = np.array([[user_id, needed_mesin, needed_ban, needed_bodi, needed_interior, needed_oli]], dtype=np.float32)
 
     # Set the input tensor
     input_details = interpreter.get_input_details()
