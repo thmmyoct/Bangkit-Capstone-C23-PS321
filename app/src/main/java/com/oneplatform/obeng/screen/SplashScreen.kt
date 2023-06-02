@@ -1,4 +1,4 @@
-package com.oneplatform.obeng.ui.screen
+package com.oneplatform.obeng.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

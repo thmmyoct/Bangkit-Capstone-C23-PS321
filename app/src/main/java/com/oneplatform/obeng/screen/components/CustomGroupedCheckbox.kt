@@ -1,4 +1,4 @@
-package com.oneplatform.obeng.ui.screen.components
+package com.oneplatform.obeng.screen.components
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth

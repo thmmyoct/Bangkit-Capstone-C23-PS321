@@ -5,9 +5,12 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.oneplatform.obeng.ui.screen.*
-import com.oneplatform.obeng.ui.screen.components.RegisterForm.RegisterFormTechnician
-import com.oneplatform.obeng.ui.screen.components.RegisterForm.RegisterFormUser
+import com.oneplatform.obeng.screen.HomeScreen
+import com.oneplatform.obeng.screen.LoginScreen
+import com.oneplatform.obeng.screen.SplashScreen
+import com.oneplatform.obeng.screen.*
+import com.oneplatform.obeng.screen.components.RegisterForm.RegisterFormTechnician
+import com.oneplatform.obeng.screen.components.RegisterForm.RegisterFormUser
 
 @Composable
 fun Navigation(){

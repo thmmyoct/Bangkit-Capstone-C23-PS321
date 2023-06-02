@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class)
 
-package com.oneplatform.obeng.ui.screen
+package com.oneplatform.obeng.screen
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -40,9 +40,8 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
 import com.oneplatform.obeng.R
-import com.oneplatform.obeng.navigation.Screen
-import com.oneplatform.obeng.ui.screen.components.CustomStyleTextField
-import com.oneplatform.obeng.ui.screen.components.HeaderView
+import com.oneplatform.obeng.screen.components.CustomStyleTextField
+import com.oneplatform.obeng.screen.components.HeaderView
 import com.oneplatform.obeng.ui.theme.ObengTheme
 import com.oneplatform.obeng.ui.theme.Red100
 import com.oneplatform.obeng.ui.theme.Red20
@@ -198,7 +197,7 @@ fun CustomerLoginPage(navController: NavController) {
                         )
                         Button(
                             onClick = {
-                                navController.popBackStack()
+                                //navController.popBackStack()
                                 navController.navigate("home_screen")
                             },
                             colors = ButtonDefaults.buttonColors(containerColor = Red100),
@@ -370,7 +369,7 @@ fun TechnicianLoginPage(navController: NavController) {
                         )
                         Button(
                             onClick = {
-                                navController.popBackStack()
+                                //navController.popBackStack()
                                 navController.navigate("home_screen")},
                             colors = ButtonDefaults.buttonColors(containerColor = Red100),
                             modifier = Modifier

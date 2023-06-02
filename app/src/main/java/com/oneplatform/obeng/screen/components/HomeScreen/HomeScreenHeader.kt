@@ -1,4 +1,4 @@
-package com.oneplatform.obeng.ui.screen.components.HomeScreen
+package com.oneplatform.obeng.screen.components.HomeScreen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -31,7 +31,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.oneplatform.obeng.R
-import com.oneplatform.obeng.ui.screen.components.CustomAppSearchBar
+import com.oneplatform.obeng.screen.components.CustomAppSearchBar
 
 @Composable
 fun HomeScreenHeader() {
@@ -90,7 +90,7 @@ fun HeaderHomePopularItems() {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 16.dp),
+            .padding(top = 8.dp, bottom = 8.dp, start = 8.dp, end = 8.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {

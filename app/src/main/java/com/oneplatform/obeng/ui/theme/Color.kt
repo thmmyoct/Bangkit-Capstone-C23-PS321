@@ -11,6 +11,7 @@ val secondary =  Color(0xFFF86B6B)
 val gray = Color(0xFF4B4F5A)
 val dark_gray = Color(0xFF54555A)
 val light_gray = Color(0xFF696969)
+val orange = Color(0xFFFF5722)
 val text_hint_color = Color(0xFFA7A7A7)
 
 val splash_color = Color(0xFFFF5757)
